@@ -1,0 +1,14 @@
+# Nunca commitar dados de docentes (o XML do Lattes tem CPF, RG, filiação)
+*.xml
+*.lattes
+
+# Base SJR: o site usa só data/sjr.db.gz (tools/gerar_db.mjs).
+# O banco descompactado e os CSVs de origem ficam locais.
+data/sjr.db
+data/sjr-*.csv
+
+node_modules/
+.DS_Store
+
+# Capturas de revisão de design (locais)
+.impeccable/review/

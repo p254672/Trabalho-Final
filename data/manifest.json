@@ -1,0 +1,20 @@
+{
+  "arquivos": [
+    {
+      "ano": 2022,
+      "arquivo": "sjr-2022.csv"
+    },
+    {
+      "ano": 2023,
+      "arquivo": "sjr-2023.csv"
+    },
+    {
+      "ano": 2024,
+      "arquivo": "sjr-2024.csv"
+    },
+    {
+      "ano": 2025,
+      "arquivo": "sjr-2025.csv"
+    }
+  ]
+}

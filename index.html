@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ME315 · Credenciamento docente</title>
+<link rel="preload" href="vendor/fonts/stix-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* ---------- STIX Two Text (auto-hospedada, subconjuntos do Google Fonts, OFL) ---------- */
+  @font-face{font-family:"STIX Two Text";font-style:normal;font-weight:400 700;font-display:swap;src:url(vendor/fonts/stix-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"STIX Two Text";font-style:normal;font-weight:400 700;font-display:swap;src:url(vendor/fonts/stix-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:"STIX Two Text";font-style:normal;font-weight:400 700;font-display:swap;src:url(vendor/fonts/stix-greek.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}
+  @font-face{font-family:"STIX Two Text";font-style:normal;font-weight:400 700;font-display:swap;src:url(vendor/fonts/stix-math.woff2) format("woff2");unicode-range:U+00B7,U+00D7,U+2190-22FF}
+  @font-face{font-family:"STIX Two Text";font-style:italic;font-weight:400 700;font-display:swap;src:url(vendor/fonts/stix-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:"STIX Two Text";font-style:italic;font-weight:400 700;font-display:swap;src:url(vendor/fonts/stix-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  /* Latin Modern Mono (o \texttt do LaTeX; GUST Font License), subconjunto latino */
+  @font-face{font-family:"Latin Modern Mono";font-style:normal;font-weight:400;font-display:swap;src:url(vendor/fonts/lmmono10-regular.woff2) format("woff2")}
+
+  :root{
+    color-scheme:light;
+    --desk:#cdd5e0; --sheet:#ffffff; --ink:#111418; --ink2:#2f3540; --muted:#535a66;
+    --rule:#111418; --hair:#c9d0da; --hair2:#e6eaf0;
+    --navy:#132a4f; --navy2:#1d3a66; --navy-ink:#e9eef6; --navy-mute:#a9b8cf;
+    --accent:#1f5bc4; --accent2:#6f9be3; --accent-tint:#e8f0fc;
+    --ref:#1f5bc4; --ref-ink:#163f8a; --ref-tint:#e8f0fc; --sel:#edf3fc;
+    --ok:#17713a; --ok-bg:#e9f6ee; --no:#b3261e; --no-bg:#fcecea;
+    --warn:#7a4d00; --warn-bg:#fff5dc; --warn-rule:#d9a43a;
+    --serif:"STIX Two Text",Cambria,"Cambria Math","Times New Roman",serif;
+    --mono:"Latin Modern Mono","Courier New",ui-monospace,monospace;
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scrollbar-color:#a9adb3 var(--desk)}
+  body{margin:0;background:var(--desk);color:var(--ink);font:17px/1.5 var(--serif);font-variant-numeric:lining-nums;-webkit-font-smoothing:antialiased;caret-color:var(--ref)}
+  ::selection{background:#cfdcef;color:var(--ink)}
+  [hidden]{display:none!important}
+  h1,h2,h3,p,figure{margin:0}
+  button,input,select{font:inherit;color:inherit}
+  a{color:var(--ref);text-underline-offset:.18em;text-decoration-thickness:1px}
+  :focus-visible{outline:2px solid var(--ref);outline-offset:2px}
+  var,.v{font-style:italic;font-family:var(--serif)}
+  sub{font-size:.72em;line-height:0}
+  .tnum{font-variant-numeric:tabular-nums lining-nums}
+  .sc{font-variant-caps:all-small-caps;letter-spacing:.045em}
+  .mono{font-family:var(--mono);font-size:.92em;letter-spacing:0;white-space:nowrap}
+  a.ref{color:var(--ref);text-decoration:none}
+  a.ref:hover{text-decoration:underline}
+  .note.prose{max-width:80ch}
+  .muted{color:var(--muted)}
+
+  /* ---------- controles: \fbox em versalete, campos como linhas de preenchimento ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:34px;padding:3px 14px 5px;border:1px solid var(--ink);border-radius:0;background:transparent;color:var(--ink);cursor:pointer;font-variant-caps:all-small-caps;letter-spacing:.06em;font-size:17px;font-weight:500;line-height:1.2;text-decoration:none;white-space:nowrap;transition:background-color .15s,color .15s}
+  .btn:hover{background:var(--hair2)}
+  .btn{border-color:var(--navy);color:var(--navy)}
+  .btn:hover{background:var(--accent-tint)}
+  .btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+  .btn.primary:hover{background:var(--navy2)}
+  .btn:disabled{opacity:.45;cursor:progress}
+  .btn[aria-pressed=true]{background:var(--ref-tint);border-color:var(--ref);color:var(--ref-ink)}
+  .link{border:0;background:none;padding:0;color:var(--ref);cursor:pointer;font-variant-caps:all-small-caps;letter-spacing:.05em;font-size:inherit}
+  .link:hover{text-decoration:underline;text-underline-offset:.18em}
+  .field{display:block;min-width:0}
+  .field>span{display:block;font-variant-caps:all-small-caps;letter-spacing:.06em;color:var(--ink2);font-size:16px;line-height:1.2}
+  .field input{display:block;width:100%;height:34px;padding:2px 0 0;border:0;border-bottom:1px solid #8c8c8c;border-radius:0;background:transparent;font-size:17px;font-variant-numeric:tabular-nums lining-nums;transition:border-color .15s,box-shadow .15s}
+  .field input:hover{border-bottom-color:var(--ink)}
+  .field input:focus{outline:0;border-bottom-color:var(--ref);box-shadow:inset 0 -1px 0 var(--ref)}
+  .field input:-webkit-autofill{-webkit-box-shadow:inset 0 0 0 40px var(--sheet);-webkit-text-fill-color:var(--ink)}
+  .field input::placeholder{color:#7a7a7a;font-style:italic}
+  .field input[type=date]{font-family:var(--serif)}
+  .field select{display:block;width:100%;height:34px;padding:2px 28px 0 0;border:0;border-bottom:1px solid #8c8c8c;border-radius:0;font-size:17px;cursor:pointer;appearance:none;-webkit-appearance:none;
+    background:linear-gradient(45deg,transparent 50%,var(--ref) 50%) calc(100% - 13px) 55%/6px 6px no-repeat,linear-gradient(-45deg,transparent 50%,var(--ref) 50%) calc(100% - 7px) 55%/6px 6px no-repeat;transition:border-color .15s,box-shadow .15s}
+  .field select:hover{border-bottom-color:var(--ink)}
+  .field select:focus{outline:0;border-bottom-color:var(--ref);box-shadow:inset 0 -1px 0 var(--ref)}
+  .field select option{background:var(--sheet);color:var(--ink)}
+  input[type=checkbox]{width:16px;height:16px;margin:0;accent-color:var(--ink);flex:none}
+  input[type=file]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+  label.btn:focus-within{outline:2px solid var(--ref);outline-offset:2px}
+
+  /* ---------- a folha ---------- */
+  .sheet{background:var(--sheet);max-width:1120px;margin:28px auto 72px;padding:64px 80px 72px;box-shadow:0 1px 2px rgba(20,22,26,.08),0 10px 36px rgba(20,22,26,.07)}
+  .runin{display:inline;font-weight:700;font-size:inherit}
+  .note{font-size:15.5px;color:var(--ink2);line-height:1.5}
+  .note b{color:var(--ink)}
+  .aviso{border:1px solid var(--warn-rule);background:var(--warn-bg);color:var(--warn);padding:7px 12px 8px;font-size:15.5px;line-height:1.45}
+  .aviso b{color:var(--warn)}
+  /* caixa de teorema (tcolorbox): moldura e faixa de título */
+  .tbox{border:1px solid var(--navy);background:#fff}
+  .tbox>.tbox-h{background:var(--navy);color:#fff;padding:6px 16px 7px;font-weight:600;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+  .tbox>.tbox-h small{font-weight:400;color:var(--navy-mute);font-size:15px}
+  .tbox>.tbox-b{padding:16px 20px 12px}
+  .tbox.ok{border-color:var(--ok)} .tbox.ok>.tbox-h{background:var(--ok)} .tbox.ok>.tbox-h small{color:#cfe9d8}
+  .tbox.no{border-color:var(--no)} .tbox.no>.tbox-h{background:var(--no)} .tbox.no>.tbox-h small{color:#f6d3cf}
+
+  /* ---------- página de título (login) ---------- */
+  #login{min-height:100vh;padding:28px 16px;display:grid;place-items:center;background:var(--navy)}
+  #login .sheet{box-shadow:0 2px 6px rgba(0,0,0,.25),0 24px 60px rgba(0,0,0,.3)}
+  .titlepage h1{color:var(--navy)}
+  .login-form{border-top-color:var(--navy)!important}
+  #login .sheet{margin:0;max-width:820px;width:100%;padding:84px 96px 72px}
+  .titlepage{text-align:center}
+  .titlepage h1{font-size:34px;line-height:1.18;font-weight:600;letter-spacing:-.01em;text-wrap:balance;max-width:28ch;margin:0 auto}
+  .titlepage .authors{margin-top:22px;font-size:18px}
+  .titlepage .date{margin-top:4px;color:var(--ink2)}
+  .abstract{max-width:56ch;margin:44px auto 0;font-size:16px;line-height:1.5}
+  .abstract h2{font-size:16px;font-weight:700;text-align:center;margin-bottom:6px}
+  .rules{max-width:56ch;margin:26px auto 0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:16px}
+  .rules dt{font-weight:700;white-space:nowrap}
+  .rules dd{margin:0}
+  .login-form{max-width:56ch;margin:44px auto 0;padding-top:26px;border-top:1px solid var(--rule)}
+  .login-form .lede{font-size:16px}
+  .login-row{display:grid;grid-template-columns:1fr 1fr auto;gap:22px;align-items:end;margin-top:16px}
+  .login-row .btn{min-width:112px}
+  #login-err{min-height:22px;margin-top:10px;font-size:15.5px;color:var(--no)}
+
+  /* ---------- cabeçalho corrente ---------- */
+  .top{position:sticky;top:0;z-index:5;background:var(--navy);color:var(--navy-ink);box-shadow:0 1px 0 rgba(0,0,0,.2)}
+  .top-in{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:28px;min-height:56px}
+  .brand{font-variant-caps:all-small-caps;letter-spacing:.07em;font-size:18px;font-weight:600;white-space:nowrap;color:#fff}
+  .tabs{display:flex;gap:4px;align-self:stretch}
+  .tab{position:relative;border:0;background:none;padding:0 12px;cursor:pointer;color:var(--navy-mute);font-size:17px;white-space:nowrap;transition:color .15s}
+  .tab .n{font-variant-numeric:tabular-nums;margin-right:6px}
+  .tab:hover{color:#fff}
+  .tab[aria-selected=true]{color:#fff}
+  .tab[aria-selected=true]::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:3px;background:var(--accent2)}
+  .top .sp{flex:1}
+  .top .acts{display:flex;gap:18px}
+  .top .link{color:var(--navy-ink)}
+  .top :focus-visible{outline-color:#fff}
+
+  /* ---------- corpo do artigo ---------- */
+  .sheet.doc{padding-top:34px;margin-top:18px}
+  .src{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 28px;align-items:center;padding-bottom:0;margin-bottom:26px}
+  .src .lbl{font-weight:700}
+  .src .files{font-size:14.5px;color:var(--muted);overflow-wrap:anywhere}
+  .src .aviso{grid-column:1/-1;margin-top:8px}
+  .src .act{grid-row:1/3;grid-column:2}
+
+  h2.sec{font-size:28px;line-height:1.2;font-weight:600;letter-spacing:-.005em;display:flex;gap:18px;align-items:baseline;color:var(--navy);padding-bottom:10px;border-bottom:2px solid var(--navy)}
+  h2.sec .n,h3.sub .n{font-variant-numeric:tabular-nums;color:var(--accent)}
+  h3.sub{color:var(--navy)}
+  h3.sub{font-size:20px;font-weight:600;margin:32px 0 12px;display:flex;gap:14px;align-items:baseline}
+  h2.sec+h3.sub{margin-top:18px}
+  .prose{max-width:72ch}
+  .prose+.prose{margin-top:10px}
+
+  .hyp{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:22px 56px}
+  .hyp .col{display:grid;gap:14px;align-content:start}
+  .hyp .col>h4{margin:0;font-size:17px;font-style:italic;font-weight:400;color:var(--ink2)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:end}
+  .lattes{display:flex;gap:14px;align-items:center}
+  .lattes .note{font-size:14px;line-height:1.35}
+  .opt{display:flex;gap:10px;align-items:baseline;cursor:pointer;line-height:1.35}
+  .opt input{transform:translateY(2px)}
+  .opt small{color:var(--muted);font-size:14.5px;margin-left:6px;white-space:nowrap}
+  .opt-med{display:flex;gap:10px 18px;align-items:baseline;flex-wrap:wrap}
+  .opt-med .field{width:150px;display:flex;align-items:baseline;gap:8px}
+  .opt-med .field>span{white-space:nowrap}
+  .opt-med .field input{height:28px}
+  .janela{margin-top:20px;max-width:none}
+  .janela b{font-variant-numeric:tabular-nums}
+
+  /* proposição e equação */
+  .prop{font-size:19px;line-height:1.5}
+  .prop i{font-style:italic}
+  .prop .ok{color:var(--ok);font-weight:700;font-style:italic}
+  .prop .no{color:var(--no);font-weight:700;font-style:italic}
+  #res-box .eq{margin:10px 0 0;padding:10px 0 4px;border-top:1px solid var(--hair2)}
+  .eq{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px;margin:22px 0 6px;padding:6px 0}
+  .eq-body{text-align:center;font-size:24px;line-height:1.6;overflow-x:auto;white-space:nowrap;padding:2px 0}
+  .eq-body .rel{padding:0 .28em}
+  .eq-body .op{padding:0 .2em}
+  .eq-body .tot{font-weight:700;padding:1px 4px;border-radius:2px;transition:background-color 1.4s var(--ease)}
+  .eq-body .tot.flash{background:var(--ref-tint);transition:none}
+  .eq-body .ok{color:var(--ok)} .eq-body .no{color:var(--no)}
+  .eq-no{font-size:18px;color:var(--ink2);font-variant-numeric:tabular-nums}
+
+  figure.fig{margin:26px 0 0}
+  .meter{position:relative;padding-top:26px}
+  .meter-track{position:relative;display:flex;height:22px;background:var(--sheet);border:1px solid var(--ink)}
+  .meter-track{height:26px!important;border-color:var(--navy)!important;background:var(--hair2)!important}
+  .meter-track .seg{position:relative;height:100%;background:var(--accent);border-right:2px solid #fff;transition:width .6s var(--ease);min-width:3px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14.5px;overflow:hidden}
+  .meter-track .seg:nth-child(even){background:var(--navy2)}
+  .meter-thr{border-left:2px solid var(--no)!important}
+  .meter-thr span{color:var(--no);font-weight:600}
+  .meter-track .seg:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+  .meter-thr{position:absolute;top:0;bottom:-6px;width:0;border-left:1.5px solid var(--ink);transition:left .6s var(--ease)}
+  .meter-thr span{position:absolute;top:0;left:6px;font-size:14px;white-space:nowrap;line-height:1}
+  .meter-scale{position:relative;height:18px;margin-top:6px;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .meter-scale span{position:absolute;top:0;transform:translateX(-50%)}
+  .meter-scale span:first-child{transform:none}
+  .meter-scale span:last-child{transform:translateX(-100%)}
+  figcaption,.caption{font-size:15.5px;line-height:1.45;color:var(--ink2);max-width:80ch}
+  figcaption{margin-top:12px}
+  figcaption b,.caption b{color:var(--ink)}
+
+  /* tabelas booktabs */
+  .tbar{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;margin-bottom:10px}
+  .tbar .tools{display:flex;gap:10px;flex-wrap:wrap}
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.4}
+  thead th{font-weight:600;text-align:left;padding:8px 14px 7px 0;border-top:2px solid var(--navy);border-bottom:1px solid var(--navy);vertical-align:bottom;white-space:nowrap;color:var(--navy)}
+  tbody tr:nth-child(even of :not(.proof)) td{background:#f7f9fc}
+  tbody td{padding:7px 14px 7px 0;vertical-align:top}
+  tbody tr:first-child td{padding-top:12px}
+  tbody tr:last-child td{border-bottom:2px solid var(--rule)}
+  th.n,td.n{text-align:right;font-variant-numeric:tabular-nums lining-nums}
+  td.c,th.c{text-align:center}
+  td .t{font-weight:500}
+  td .j{font-style:italic;color:var(--ink2);font-size:15px;margin-top:1px}
+  .lbl-p{width:44px;white-space:nowrap;color:var(--muted)}
+  tr.in td,tr.in+tr.proof td{background:var(--sel)!important}
+  tr.in .lbl-p{color:var(--accent);font-weight:700}
+  tr.in td:first-child{padding-left:8px}
+  tbody td:first-child{padding-left:8px}
+  thead th:first-child{padding-left:8px}
+  tr.out .t{color:var(--ink2);font-weight:400}
+  .pbar{display:block;height:3px;background:var(--hair2);margin-top:6px;min-width:56px}
+  .pbar{height:4px!important}
+  .pbar i{display:block;height:100%;background:var(--accent);transition:width .6s var(--ease)}
+  tr.out .pbar i{background:#9aa3b0}
+  .st{white-space:nowrap;font-size:15px;color:var(--ink2)}
+  .st.in{color:var(--ink);font-weight:600}
+  .st.bad{color:var(--no)}
+  tr.proof td{background:#fff;padding:0 14px 12px 8px;font-size:15.5px;color:var(--ink2)}
+  tr.in+tr.proof td{background:var(--sel)}
+  tr.proof .pr{display:block;max-width:92ch;padding-left:44px}
+  tr.proof i.d{font-style:italic;color:var(--ink)}
+  tr.proof .qed{margin-left:8px}
+  .empty{padding:14px 0 4px;color:var(--ink2)}
+  .table-note{margin-top:10px;font-size:15px;color:var(--ink2);max-width:86ch}
+
+  /* §2 */
+  .hyp2{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,.8fr) minmax(0,1.6fr);gap:22px 36px;align-items:end}
+  .def .eq-body{font-size:21px}
+  .frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.1;margin:0 .15em;font-size:.85em}
+  .frac>span:first-child{border-bottom:1px solid currentColor;padding:0 .2em}
+  .sumop{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1;margin:0 .15em}
+  .sumop big{font-size:1.5em;line-height:1}
+  .sumop small{font-size:.55em;font-style:italic}
+  td.yr{color:var(--ink2)}
+  td.yr.na{color:#9a9a9a}
+  td.mean{font-weight:600}
+
+  /* apêndices */
+  .appx{margin-top:56px;border-top:2px solid var(--navy)}
+  details.ap>summary{color:var(--navy)}
+  details.ap{border-bottom:1px solid var(--hair)}
+  details.ap>summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:12px;padding:16px 0;font-size:18px;font-weight:600}
+  details.ap>summary::-webkit-details-marker{display:none}
+  details.ap>summary::before{content:"";flex:none;width:7px;height:7px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:translateY(-3px) rotate(-45deg);transition:transform .2s var(--ease)}
+  details.ap[open]>summary::before{transform:translateY(-5px) rotate(45deg)}
+  details.ap>summary small{font-weight:400;color:var(--muted);font-size:15.5px}
+  details.ap>.inner{padding:0 0 26px}
+  .addrow{display:grid;grid-template-columns:90px minmax(0,2fr) minmax(0,1.4fr) 130px auto;gap:16px;align-items:end;margin-top:20px}
+  pre{margin:0;background:#fafaf9;border-top:2px solid var(--rule);border-bottom:2px solid var(--rule);color:#1d1d1d;padding:16px 18px;overflow:auto;font:15px/1.5 var(--mono);tab-size:2}
+  pre .cm{color:#6b6b6b;font-style:italic}
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;font-size:16px;box-shadow:0 10px 30px rgba(0,0,0,.2);max-width:min(92vw,600px);z-index:20}
+  dialog{border:1px solid var(--ink);border-radius:0;padding:28px 30px;background:var(--sheet);color:var(--ink);width:min(92vw,400px);box-shadow:0 2px 4px rgba(0,0,0,.08)}
+  dialog::backdrop{background:rgba(20,22,26,.35)}
+  dialog form{display:grid;gap:16px}
+  dialog h3{font-size:20px;font-weight:600}
+  dialog .row{display:flex;gap:10px;justify-content:flex-end;margin-top:6px}
+
+  .print-head{display:none}
+
+  @media (max-width:980px){
+    .sheet{padding:48px 40px 56px;margin:16px 12px 48px}
+    .hyp{grid-template-columns:1fr 1fr}
+    .hyp .col.ex{grid-column:1/-1}
+    .top-in{gap:16px}
+  }
+  @media (max-width:760px){
+    body{font-size:16.5px}
+    .sheet,.sheet.doc{padding:32px 18px 40px;margin:0 0 32px;box-shadow:none}
+    #login{padding:0;place-items:stretch}
+    #login .sheet{padding:48px 20px 40px}
+    .titlepage h1{font-size:27px}
+    .login-row{grid-template-columns:1fr;gap:18px}
+    .rules{grid-template-columns:1fr;gap:2px}
+    .rules dd{margin-bottom:8px}
+    .top-in{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 12px;padding:10px 16px 0;min-height:0}
+    .brand{grid-column:1;grid-row:1;font-size:15.5px;letter-spacing:.05em}
+    .top .sp{display:none}
+    .top .acts{grid-column:2;grid-row:1;gap:14px;font-size:15.5px}
+    .tabs{grid-column:1/-1;grid-row:2;margin:0 -8px;min-height:44px;overflow:hidden}
+    .tab{padding:0 8px;font-size:16px}
+    .tab .long{display:none}
+    .tab[aria-selected=true]::after{left:8px;right:8px}
+    .src{grid-template-columns:1fr}
+    .src .act{grid-row:auto;grid-column:auto;margin-top:6px}
+    .lattes{flex-wrap:wrap}
+    .tbox>.tbox-b{padding:14px 14px 10px}
+    h2.sec{font-size:23px;gap:12px}
+    h3.sub{font-size:18.5px;margin-top:38px}
+    .hyp,.hyp2{grid-template-columns:1fr}
+    .eq{grid-template-columns:1fr;gap:4px}
+    .eq-body{font-size:19px;text-align:left}
+    #eq1-body{white-space:normal;line-height:1.75}
+    #eq1-body .g{white-space:nowrap}
+    #t-res,#t-rv{min-width:760px}
+    #t-res td:nth-child(2),#t-rv td:nth-child(2){min-width:230px}
+    tr.proof .pr{position:sticky;left:8px;max-width:calc(100vw - 52px);padding-left:0}
+    details.ap>summary{display:block;padding-left:20px;position:relative}
+    details.ap>summary::before{position:absolute;left:2px;top:27px}
+    details.ap>summary small{display:block}
+    .eq-no{text-align:right}
+    .prop{font-size:17.5px}
+    .addrow{grid-template-columns:1fr 1fr}
+    .addrow .w{grid-column:1/-1}
+    table{font-size:15px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{transition:none!important;animation:none!important}
+  }
+  @media print{
+    @page{margin:18mm 16mm}
+    body{background:#fff;font-size:11pt}
+    .top,.src .act,.tbar .tools,.appx,.toast,#login,.addrow,.no-print,input[type=file]{display:none!important}
+    .sheet,.sheet.doc{box-shadow:none;margin:0;padding:0;max-width:none}
+    .print-head{display:flex;justify-content:space-between;font-variant-caps:all-small-caps;letter-spacing:.06em;font-size:10pt;border-bottom:1px solid #000;padding-bottom:4px;margin-bottom:18pt}
+    [role=tabpanel][hidden]{display:none!important}
+    .field input{border-bottom-color:#000}
+    tr.in,tr.in+tr.proof td{background:#eef2f8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .meter-track .seg,.tbox-h,.pbar i,.aviso{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    h3.sub{break-after:avoid}
+    tr{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PÁGINA DE TÍTULO / ACESSO ============ -->
+<div id="login">
+  <article class="sheet">
+    <header class="titlepage">
+      <h1>Credenciamento docente e ranking de periódicos pelo percentil SJR</h1>
+      <p class="authors">PPGE · ME315</p>
+      <p class="date" id="lg-date"></p>
+    </header>
+    <section class="abstract" aria-labelledby="abs-h">
+      <h2 id="abs-h">Resumo</h2>
+      <p>Seleção dos melhores artigos nos últimos quatro anos, com pontuação pelo percentil do periódico no Scimago Journal Rank, e ranking das revistas de cada categoria do SJR pelo percentil médio no mesmo período. Todo o cálculo roda no navegador, em SQL, e fica visível.</p>
+    </section>
+    <dl class="rules">
+      <dt>Art. X</dt><dd>A soma dos até 4 melhores <var>p</var><sub>i</sub> (<var>p</var><sub>i</sub> ≥ 0,25) deve atingir 1,25.</dd>
+      <dt>Art. Y</dt><dd>Janela ampliada por parentalidade, licença médica ou PcD.</dd>
+    </dl>
+    <form class="login-form" id="login-form" autocomplete="off">
+      <p class="lede"><span class="runin">Acesso restrito.</span> Entre com as credenciais da disciplina.</p>
+      <div class="login-row">
+        <label class="field"><span>Usuário</span><input id="lg-user" type="text" autocomplete="username" autocapitalize="off" spellcheck="false" required></label>
+        <label class="field"><span>Senha</span><input id="lg-pass" type="password" autocomplete="current-password" required></label>
+        <button class="btn primary" id="lg-btn" type="submit">Entrar</button>
+      </div>
+      <div id="login-err" role="alert" aria-live="polite"></div>
+    </form>
+  </article>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="app" hidden>
+  <header class="top"><div class="top-in">
+    <div class="brand">Credenciamento docente</div>
+    <nav class="tabs" role="tablist" aria-label="Seções">
+      <button class="tab" role="tab" id="tab-ap" aria-controls="pn-ap" aria-selected="true" data-tab="apuracao"><span class="n">§1</span>Apuração<span class="long"> do docente</span></button>
+      <button class="tab" role="tab" id="tab-rv" aria-controls="pn-rv" aria-selected="false" data-tab="revistas" tabindex="-1"><span class="n">§2</span>Revistas<span class="long"> por categoria</span></button>
+    </nav>
+    <div class="sp"></div>
+    <div class="acts">
+      <button class="link" id="print" type="button">Imprimir / PDF</button>
+      <button class="link" id="logout" type="button">Sair</button>
+    </div>
+  </div></header>
+
+  <article class="sheet doc">
+    <div class="print-head"><span>ME315 · Credenciamento docente</span><span id="print-head"></span></div>
+
+    <!-- fonte de dados, comum às duas seções -->
+    <section class="src" aria-label="Base SJR">
+      <p><span class="lbl">Base SJR.</span> <span id="sjr-status">Carregando…</span></p>
+      <p class="files"><span id="sjr-files"></span> · Fonte: scimagojr.com → Journal Rankings, por área, só Journals; um arquivo por área e por ano.</p>
+      <div class="act">
+        <label class="btn" for="csv-in">Adicionar CSV do Scimago</label><input id="csv-in" type="file" accept=".csv,text/csv" multiple>
+      </div>
+      <div id="sjr-banner" hidden></div>
+    </section>
+
+    <!-- ========== §1 APURAÇÃO ========== -->
+    <section role="tabpanel" id="pn-ap" aria-labelledby="tab-ap">
+      <h2 class="sec"><span class="n">1</span>Apuração do docente</h2>
+
+      <h3 class="sub" id="h1s"><span class="n">1.1</span>Hipóteses</h3>
+      <div class="hyp">
+        <div class="col">
+          <h4>Docente e solicitação</h4>
+          <label class="field"><span>Nome</span><input id="nome" type="text" autocomplete="off"></label>
+          <div class="lattes"><label class="btn" for="xml-in">Carregar XML do Lattes</label><input id="xml-in" type="file" accept=".xml,text/xml">
+            <p class="note">Lido no seu navegador. Só nome e artigos são usados; CPF, RG e filiação são descartados.</p></div>
+          <div class="row2">
+            <label class="field"><span>Data da solicitação</span><input id="dt-sol" type="date"></label>
+            <label class="field"><span>Artigos considerados (<var>N</var>)</span><input id="n-art" type="number" value="4" min="1" max="10"></label>
+          </div>
+        </div>
+        <div class="col ex">
+          <h4>Exceções (Art. Y)</h4>
+          <label class="opt"><input id="e-par" type="checkbox"><span>Licença de parentalidade<small>+50%, até 6 anos</small></span></label>
+          <label class="opt"><input id="e-pcd" type="checkbox"><span>PcD ou dependente com cuidados contínuos<small>+50%, até 5 anos</small></span></label>
+          <div class="opt-med">
+            <label class="opt"><input id="e-med" type="checkbox"><span>Licença médica<small>soma a duração</small></span></label>
+            <label class="field"><span>Meses</span><input id="e-med-m" type="number" min="0" value="0" aria-label="Duração da licença médica em meses"></label>
+          </div>
+        </div>
+      </div>
+      <p class="janela" id="janela"></p>
+
+      <h3 class="sub"><span class="n">1.2</span>Resultado</h3>
+      <div class="tbox" id="res-box">
+        <div class="tbox-h"><span>Proposição 1</span><small>Art. X</small></div>
+        <div class="tbox-b">
+          <p class="prop" id="prop"></p>
+          <div class="eq" id="eq1" hidden><div class="eq-body tnum" id="eq1-body"></div><span class="eq-no">(1)</span></div>
+        </div>
+      </div>
+      <figure class="fig" id="fig1" hidden>
+        <div class="meter">
+          <div class="meter-thr" id="meter-thr"><span>1,25</span></div>
+          <div class="meter-track" id="meter-track" role="img"></div>
+          <div class="meter-scale" id="meter-scale"></div>
+        </div>
+        <figcaption id="fig1-cap"></figcaption>
+      </figure>
+      <p class="note prose" style="margin-top:18px"><span class="runin">Observação 1.</span> Interpretação adotada, a validar: parentalidade e PcD não se acumulam (vale o maior teto); a licença médica soma-se. O Lattes informa só o ano do artigo, então o filtro é por ano-calendário.</p>
+
+      <h3 class="sub"><span class="n">1.3</span>Artigos na janela</h3>
+      <div class="tbar">
+        <p class="caption" id="t1-cap"></p>
+        <div class="tools">
+          <button class="btn" id="demo-tg" type="button" aria-pressed="false" aria-controls="t-res">Mostrar demonstração</button>
+          <button class="btn" id="csv-out" type="button">Exportar CSV</button>
+        </div>
+      </div>
+      <div id="res-msg"></div>
+      <div class="tbl-wrap">
+        <table id="t-res">
+          <thead><tr><th></th><th>Artigo</th><th class="n">Ano</th><th>ISSN</th><th class="n"><var>p</var><sub>i</sub></th><th>Categoria de maior percentil</th><th>Situação</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="appx">
+        <details class="ap" id="ap-a">
+          <summary>Apêndice A. Produção do docente <small id="art-n"></small></summary>
+          <div class="inner">
+            <div class="tbl-wrap">
+              <table id="t-art">
+                <thead><tr><th class="n">Ano</th><th>Título</th><th>Periódico</th><th>ISSN</th><th></th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <div class="addrow">
+              <label class="field"><span>Ano</span><input id="a-ano" type="number" min="1980" max="2100"></label>
+              <label class="field w"><span>Título</span><input id="a-tit" type="text"></label>
+              <label class="field w"><span>Periódico</span><input id="a-per" type="text"></label>
+              <label class="field"><span>ISSN</span><input id="a-issn" type="text" placeholder="0000-0000"></label>
+              <button class="btn" id="a-add" type="button">Adicionar artigo</button>
+            </div>
+          </div>
+        </details>
+        <details class="ap">
+          <summary>Apêndice B. Consultas SQL <small>executadas no navegador</small></summary>
+          <div class="inner"><pre id="sql-show-1"></pre></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========== §2 REVISTAS ========== -->
+    <section role="tabpanel" id="pn-rv" aria-labelledby="tab-rv" hidden>
+      <h2 class="sec"><span class="n">2</span>Revistas por categoria</h2>
+
+      <h3 class="sub"><span class="n">2.1</span>Hipóteses</h3>
+      <div class="hyp2">
+        <label class="field"><span>Categoria do SJR</span><select id="rv-cat"></select></label>
+        <label class="field"><span>Quantidade</span><input id="rv-n" type="number" value="20" min="1" max="500"></label>
+        <label class="field"><span>Buscar por nome ou ISSN</span><input id="rv-q" type="search" autocomplete="off" spellcheck="false"></label>
+      </div>
+      <p class="janela" id="rv-janela"></p>
+      <div id="rv-aviso"></div>
+
+      <div class="def" id="def1" style="margin-top:22px">
+        <p class="prose"><span class="runin">Definição 1.</span> O percentil médio da revista <var>j</var> na categoria <var>c</var> é a média dos seus percentis nos anos do intervalo em que ela aparece na categoria:</p>
+        <div class="eq"><div class="eq-body"><var>p̄</var><sub><var>j</var></sub><span class="rel">=</span><span class="frac"><span>1</span><span>|<var>A</var><sub><var>j</var></sub>|</span></span><span class="sumop"><big>∑</big><small>a ∈ A<sub>j</sub></small></span><var>p</var><sub><var>j</var>,<var>a</var></sub>,<span style="padding-left:.8em"></span><var>p</var><sub><var>j</var>,<var>a</var></sub><span class="rel">=</span>1<span class="op">−</span><span class="frac"><span>posição<sub><var>j</var>,<var>a</var></sub> − 1</span><span><var>N</var><sub><var>c</var>,<var>a</var></sub></span></span></div><span class="eq-no">(2)</span></div>
+        <p class="note prose"><var>A</var><sub><var>j</var></sub> é o conjunto de anos SJR do intervalo em que a revista aparece na categoria. É a mesma escala do <var>p</var><sub>i</sub> usado no Art. X: só revistas com <var>p̄</var> ≥ 0,25 rendem pontos no credenciamento.</p>
+      </div>
+
+      <h3 class="sub"><span class="n">2.2</span>Resultado</h3>
+      <div class="tbar">
+        <p class="caption" id="t2-cap"></p>
+        <div class="tools"><button class="btn" id="rv-csv" type="button">Exportar CSV</button></div>
+      </div>
+      <div id="rv-msg"></div>
+      <div class="tbl-wrap">
+        <table id="t-rv">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="table-note" id="t2-note"></p>
+
+      <div class="appx">
+        <details class="ap">
+          <summary>Apêndice C. Consulta SQL do ranking <small>executada no navegador</small></summary>
+          <div class="inner"><pre id="sql-show-2"></pre></div>
+        </details>
+      </div>
+    </section>
+  </article>
+</div>
+
+<dialog id="dlg-ano">
+  <form method="dialog">
+    <h3>Ano do SJR</h3>
+    <p class="note" id="dlg-nome"></p>
+    <label class="field"><span>Ano de referência do arquivo</span><input id="dlg-ano-in" type="number" min="1999" max="2100" required></label>
+    <div class="row"><button class="btn" value="cancel" formnovalidate>Cancelar</button><button class="btn primary" value="ok">Carregar</button></div>
+  </form>
+</dialog>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="vendor/sql-wasm.js"></script>
+<script>
+"use strict";
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const normIssn = s => String(s || "").toUpperCase().replace(/[^0-9X]/g, "");
+const fmtIssn = s => s.length === 8 ? s.slice(0,4)+"-"+s.slice(4) : s;
+const f3 = v => v.toFixed(3).replace(".", ",");
+const P = i => `<var>p</var><sub>${i}</sub>`;
+const hoje = () => new Date().toLocaleDateString("pt-BR", { day:"numeric", month:"long", year:"numeric" });
+$("#lg-date").textContent = hoje();
+
+/* =====================  ACESSO  =====================
+   Atenção: o GitHub Pages é estático. Esta barreira roda no navegador e
+   serve para restringir o uso casual; não substitui autenticação de servidor.
+   Credenciais: apenas hashes, gerados por tools/gerar_credencial.mjs. */
+/*AUTH:BEGIN*/
+const AUTH = {
+  "salt": "Kbfu9oRuciOJSANMigTTaA==",
+  "iter": 210000,
+  "hashes": [
+    "dFN+DBzB5e7ApVgIClwHsvt8V4z0OrG6Ti7osGXrdOw=",
+    "U2aQy/6Ahb7PwBIqWdx0sRs+qAV9m9Durh2sazToffc="
+  ]
+};
+/*AUTH:END*/
+const b64 = {
+  dec: s => Uint8Array.from(atob(s), c => c.charCodeAt(0)),
+  enc: u => btoa(String.fromCharCode(...u))
+};
+async function derivar(user, pass){
+  const norm = user.trim().toLowerCase().replace(/\s+/g, " ");
+  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(norm + "\u0000" + pass), "PBKDF2", false, ["deriveBits"]);
+  const bits = await crypto.subtle.deriveBits({ name:"PBKDF2", hash:"SHA-256", salt:b64.dec(AUTH.salt), iterations:AUTH.iter }, key, 256);
+  return b64.enc(new Uint8Array(bits));
+}
+const sess = {
+  get(){ try{ return sessionStorage.getItem("me315_ok"); }catch{ return null; } },
+  set(v){ try{ sessionStorage.setItem("me315_ok", v); }catch{} },
+  clear(){ try{ sessionStorage.removeItem("me315_ok"); }catch{} }
+};
+let falhas = 0;
+$("#login-form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const btn = $("#lg-btn"), err = $("#login-err");
+  btn.disabled = true; btn.textContent = "Verificando…"; err.textContent = "";
+  try{
+    if (!window.crypto?.subtle) throw new Error("Este navegador não oferece criptografia. Abra o portal via https ou localhost.");
+    const h = await derivar($("#lg-user").value, $("#lg-pass").value);
+    if (AUTH.hashes.includes(h)){ sess.set(h); await entrar(); return; }
+    falhas++;
+    err.textContent = "Usuário ou senha incorretos. Confira as credenciais da disciplina e tente de novo.";
+    $("#lg-pass").value = "";
+    if (falhas >= 3) await new Promise(r => setTimeout(r, Math.min(falhas - 2, 5) * 1500));
+  }catch(ex){ err.textContent = ex.message; }
+  btn.disabled = false; btn.textContent = "Entrar"; $("#lg-pass").focus();
+});
+$("#logout").addEventListener("click", () => { sess.clear(); location.hash = ""; location.reload(); });
+
+/* =====================  SQL  ===================== */
+let SQL, db;
+const state = { artigos: [], anosSjr: [], arquivosSjr: [], seq: 1, demo: false, aba: "apuracao" };
+
+const DDL = `
+CREATE TABLE periodico(sourceid TEXT, ano INTEGER, titulo TEXT, sjr REAL, quartil TEXT, PRIMARY KEY(sourceid, ano)) WITHOUT ROWID;
+CREATE TABLE issn(issn TEXT, sourceid TEXT, ano INTEGER, PRIMARY KEY(issn, sourceid, ano)) WITHOUT ROWID;
+CREATE INDEX ix_issn_sid ON issn(sourceid);
+CREATE TABLE periodico_categoria(sourceid TEXT, ano INTEGER, categoria TEXT, PRIMARY KEY(sourceid, ano, categoria)) WITHOUT ROWID;
+CREATE TABLE artigo(id INTEGER PRIMARY KEY, titulo TEXT, ano INTEGER, issn TEXT, periodico TEXT);
+`;
+// Percentil de cada periódico em cada categoria e ano: 1 - (posição - 1) / N
+const SQL_PERCENTIL = `
+-- Percentil de cada periódico em cada categoria e ano: 1 - (posição - 1) / N
+DROP TABLE IF EXISTS percentil;
+CREATE TABLE percentil AS
+SELECT pc.sourceid, pc.ano, pc.categoria, p.sjr,
+       RANK()  OVER (PARTITION BY pc.ano, pc.categoria ORDER BY p.sjr DESC) AS posicao,
+       COUNT(*) OVER (PARTITION BY pc.ano, pc.categoria)                     AS n
+FROM periodico_categoria pc
+JOIN periodico p ON p.sourceid = pc.sourceid AND p.ano = pc.ano
+WHERE p.sjr IS NOT NULL;  -- sem SJR no ano: o Scimago não ranqueia, então fica fora de N
+ALTER TABLE percentil ADD COLUMN percentil REAL;
+UPDATE percentil SET percentil = 1.0 - (posicao - 1) * 1.0 / n;
+CREATE INDEX ix_pct ON percentil(sourceid, ano);
+CREATE INDEX ix_pct_cat ON percentil(categoria, ano);`;
+// Maior percentil de cada artigo da janela, entre todas as categorias e anos SJR da janela
+const SQL_RESULTADO = `
+-- Maior percentil de cada artigo da janela (Art. X), entre categorias e anos SJR
+WITH melhor AS (
+  SELECT i.issn, pt.categoria, pt.ano AS ano_sjr, pt.percentil, pt.posicao, pt.n,
+         ROW_NUMBER() OVER (PARTITION BY i.issn ORDER BY pt.percentil DESC, pt.ano DESC) AS rn
+  FROM issn i
+  JOIN percentil pt ON pt.sourceid = i.sourceid AND pt.ano = i.ano
+  WHERE pt.ano BETWEEN :sjr_ini AND :sjr_fim
+    AND i.issn IN (SELECT issn FROM artigo)  -- só os ISSNs do docente
+)
+SELECT a.id, a.titulo, a.ano, a.issn, a.periodico,
+       m.percentil, m.categoria, m.ano_sjr, m.posicao, m.n
+FROM artigo a
+LEFT JOIN melhor m ON m.issn = a.issn AND m.rn = 1
+WHERE a.ano BETWEEN :ano_ini AND :ano_fim
+ORDER BY (m.percentil IS NULL), m.percentil DESC, a.ano DESC;`;
+// Ranking das revistas de uma categoria pelo percentil médio nos anos SJR do intervalo
+const SQL_REVISTAS = `
+-- Ranking das revistas de uma categoria pelo percentil médio (Definição 1)
+WITH base AS (
+  SELECT sourceid, ano, percentil FROM percentil
+  WHERE categoria = :cat AND ano BETWEEN :ini AND :fim
+), agg AS (
+  SELECT sourceid, AVG(percentil) AS media, COUNT(*) AS anos,
+         GROUP_CONCAT(ano || ':' || percentil) AS serie
+  FROM base GROUP BY sourceid
+), rk AS (
+  SELECT a.*,
+         RANK()   OVER (ORDER BY a.media DESC) AS posicao,
+         COUNT(*) OVER ()                      AS total,
+         (SELECT p.titulo FROM periodico p WHERE p.sourceid = a.sourceid
+           ORDER BY p.ano DESC LIMIT 1)        AS titulo,
+         (SELECT GROUP_CONCAT(DISTINCT i.issn) FROM issn i
+           WHERE i.sourceid = a.sourceid)      AS issns
+  FROM agg a
+)
+SELECT * FROM rk
+WHERE :q = '' OR LOWER(titulo) LIKE '%' || :q || '%'
+   OR (:qi <> '' AND issns LIKE '%' || :qi || '%')
+ORDER BY media DESC, anos DESC, titulo
+LIMIT :lim;`;
+
+function novoBanco(){ if (db) db.close(); db = new SQL.Database(); db.run(DDL); state.anosSjr = []; state.arquivosSjr = []; }
+function all(sql, params){ const st = db.prepare(sql), out = []; if (params) st.bind(params); while (st.step()) out.push(st.getAsObject()); st.free(); return out; }
+
+/* =====================  CSV Scimago  ===================== */
+function parseCsv(text){
+  text = text.replace(/^﻿/, "");
+  const first = text.split(/\r?\n/, 1)[0];
+  const delim = (first.match(/;/g)||[]).length >= (first.match(/,/g)||[]).length ? ";" : ",";
+  const rows = []; let row = [], f = "", q = false;
+  for (let i = 0; i < text.length; i++){
+    const c = text[i];
+    if (q){ if (c === '"'){ if (text[i+1] === '"'){ f += '"'; i++; } else q = false; } else f += c; }
+    else if (c === '"') q = true;
+    else if (c === delim){ row.push(f); f = ""; }
+    else if (c === "\n"){ row.push(f); rows.push(row); row = []; f = ""; }
+    else if (c !== "\r") f += c;
+  }
+  if (f !== "" || row.length){ row.push(f); rows.push(row); }
+  return rows;
+}
+function carregarCsv(text, ano, nome, recalcular = true){
+  const rows = parseCsv(text);
+  const h = rows[0].map(x => x.trim().toLowerCase()), ix = n => h.indexOf(n);
+  const iSid = ix("sourceid"), iTit = ix("title"), iTipo = ix("type"), iIssn = ix("issn"), iSjr = ix("sjr"), iQ = ix("sjr best quartile"), iCat = ix("categories");
+  if ([iSid,iTit,iIssn,iSjr,iCat].some(i => i < 0)) throw new Error("o CSV não tem as colunas esperadas (Sourceid, Title, Issn, SJR, Categories). Baixe o arquivo em scimagojr.com → Journal Rankings.");
+  db.run("DROP TABLE IF EXISTS categoria_resumo");  // lista pronta deixa de valer com um CSV novo
+  db.run("BEGIN");
+  const pP = db.prepare("INSERT OR IGNORE INTO periodico VALUES (?,?,?,?,?)");
+  const pI = db.prepare("INSERT OR IGNORE INTO issn VALUES (?,?,?)");
+  const pC = db.prepare("INSERT OR IGNORE INTO periodico_categoria VALUES (?,?,?)");
+  let n = 0;
+  for (let r = 1; r < rows.length; r++){
+    const x = rows[r]; if (x.length < h.length - 2) continue;
+    if (iTipo >= 0 && x[iTipo].trim().toLowerCase() !== "journal") continue;
+    const sid = x[iSid].trim();
+    const sjr = parseFloat(String(x[iSjr]).replace(",", "."));
+    pP.run([sid, ano, x[iTit], Number.isFinite(sjr) ? sjr : null, iQ >= 0 ? x[iQ] : null]);
+    x[iIssn].split(/[,;]/).map(normIssn).filter(Boolean).forEach(s => pI.run([s, sid, ano]));
+    x[iCat].split(";").map(c => c.replace(/\s*\(Q[1-4]\)\s*$/i, "").trim()).filter(Boolean).forEach(c => pC.run([sid, ano, c]));
+    n++;
+  }
+  pP.free(); pI.free(); pC.free(); db.run("COMMIT");
+  if (!state.anosSjr.includes(ano)) state.anosSjr.push(ano);
+  state.arquivosSjr.push({ nome, ano, n });
+  if (recalcular) db.exec(SQL_PERCENTIL);
+}
+async function carregarManifest(){
+  try{
+    const m = await (await fetch("data/manifest.json", {cache:"no-cache"})).json();
+    // Baixa todos em paralelo; o percentil é calculado uma vez só, no fim.
+    const textos = await Promise.all(m.arquivos.map(async a => (await fetch("data/" + a.arquivo, {cache:"no-cache"})).text()));
+    m.arquivos.forEach((a, i) => carregarCsv(textos[i], a.ano, a.arquivo, false));
+  }catch{ aviso("Não foi possível ler data/manifest.json. Se abriu o arquivo direto do disco, use um servidor local ou adicione os CSVs manualmente."); }
+  if (state.arquivosSjr.length) db.exec(SQL_PERCENTIL);
+}
+// Base pronta (tools/gerar_db.mjs): tabelas do SJR já carregadas, sem os percentis,
+// que são calculados aqui pelo SQL_PERCENTIL. Se o arquivo faltar, cai para os CSVs do manifest.
+async function carregarBase(){
+  try{
+    const r = await fetch("data/sjr.db.gz", {cache:"no-cache"});
+    if (!r.ok) return false;
+    let bytes = new Uint8Array(await r.arrayBuffer());
+    if (bytes[0] === 0x1f && bytes[1] === 0x8b)  // gzip (o servidor não descompacta .gz)
+      bytes = new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"))).arrayBuffer());
+    const novo = new SQL.Database(bytes);
+    if (db) db.close();
+    db = novo;
+    db.exec("CREATE TABLE IF NOT EXISTS artigo(id INTEGER PRIMARY KEY, titulo TEXT, ano INTEGER, issn TEXT, periodico TEXT);");
+    db.exec("CREATE INDEX IF NOT EXISTS ix_issn_sid ON issn(sourceid);");
+    state.arquivosSjr = all("SELECT nome, ano, n FROM fonte ORDER BY ano");
+    state.anosSjr = [...new Set(state.arquivosSjr.map(f => f.ano))];
+    db.exec(SQL_PERCENTIL);
+    return true;
+  }catch{ return false; }
+}
+
+/* =====================  Lattes  ===================== */
+async function lerLattes(file){
+  const txt = new TextDecoder("iso-8859-1").decode(await file.arrayBuffer());
+  const doc = new DOMParser().parseFromString(txt, "text/xml");
+  if (doc.querySelector("parsererror")) throw new Error("O arquivo não é um XML válido. Exporte o currículo de novo em lattes.cnpq.br → Exportar → XML.");
+  const nome = doc.querySelector("DADOS-GERAIS")?.getAttribute("NOME-COMPLETO") || "";
+  const arts = [...doc.querySelectorAll("ARTIGO-PUBLICADO")].map(a => {
+    const b = a.querySelector("DADOS-BASICOS-DO-ARTIGO"), d = a.querySelector("DETALHAMENTO-DO-ARTIGO");
+    return { titulo: b?.getAttribute("TITULO-DO-ARTIGO") || "", ano: parseInt(b?.getAttribute("ANO-DO-ARTIGO")) || 0,
+             periodico: d?.getAttribute("TITULO-DO-PERIODICO-OU-REVISTA") || "", issn: normIssn(d?.getAttribute("ISSN")) };
+  });
+  return { nome, arts };
+}
+
+/* =====================  Janela (Art. Y)  ===================== */
+function calcJanela(){
+  const dt = $("#dt-sol").value ? new Date($("#dt-sol").value + "T12:00:00") : new Date();
+  let meses = 48;
+  if ($("#e-par").checked) meses = 72; else if ($("#e-pcd").checked) meses = 60;
+  if ($("#e-med").checked) meses += Math.max(0, parseInt($("#e-med-m").value) || 0);
+  const anoFim = dt.getFullYear(), anoIni = anoFim - Math.ceil(meses / 12) + 1;
+  return { dt, meses, anoIni, anoFim };
+}
+
+/* =====================  Interface  ===================== */
+let toastT;
+function aviso(t){ const el = $("#toast"); el.textContent = t; el.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => el.hidden = true, 6500); }
+const anosTxt = a => a.slice().sort().join(", ");
+
+function renderBase(){
+  const tot = all("SELECT COUNT(DISTINCT sourceid) c FROM periodico")[0].c;
+  $("#sjr-status").innerHTML = state.arquivosSjr.length
+    ? `<b class="tnum">${tot.toLocaleString("pt-BR")}</b> periódicos, ${state.anosSjr.length === 1 ? "ano" : "anos"} <span class="tnum">${anosTxt(state.anosSjr)}</span>.`
+    : "Nenhum CSV do SJR carregado. Adicione ao menos um arquivo do Scimago para começar.";
+  $("#sjr-files").textContent = state.arquivosSjr.map(f => `${f.nome} (${f.n.toLocaleString("pt-BR")})`).join(" · ");
+  const demo = state.arquivosSjr.some(f => /exemplo|ficticio/i.test(f.nome));
+  $("#sjr-banner").hidden = !demo;
+  $("#sjr-banner").className = "aviso";
+  $("#sjr-banner").innerHTML = demo ? `<b>Atenção.</b> Base de exemplo com valores de SJR fictícios, apenas para teste. Substitua pelos CSVs reais do Scimago.` : "";
+}
+
+let ultimo = null, somaAnterior = null;
+function renderApuracao(){
+  /* produção do docente (Apêndice A) */
+  $("#art-n").textContent = state.artigos.length ? `(${state.artigos.length} artigos)` : "";
+  $("#t-art tbody").innerHTML = state.artigos.length ? state.artigos.slice().sort((a,b) => b.ano - a.ano).map(a =>
+    `<tr><td class="n">${a.ano || ""}</td><td>${esc(a.titulo)}</td><td><i>${esc(a.periodico)}</i></td><td><span class="mono">${esc(fmtIssn(a.issn))}</span></td>
+     <td><button class="link" data-del="${a.id}" aria-label="Remover o artigo ${esc(a.titulo)}">remover</button></td></tr>`).join("")
+    : `<tr><td colspan="5" class="empty">Nenhum artigo. Carregue o XML do Lattes na seção <a class="ref" href="#h1s">1.1</a> ou adicione abaixo.</td></tr>`;
+
+  db.run("DELETE FROM artigo");
+  const ins = db.prepare("INSERT INTO artigo VALUES (?,?,?,?,?)");
+  state.artigos.forEach(a => ins.run([a.id, a.titulo, a.ano, a.issn, a.periodico])); ins.free();
+
+  const j = calcJanela();
+  let na = state.anosSjr.filter(y => y >= j.anoIni && y <= j.anoFim), aviso_ = "";
+  if (!na.length && state.anosSjr.length){ na = state.anosSjr; aviso_ = "Nenhum ano de SJR carregado cai dentro da janela; foram usados todos os anos carregados."; }
+  const sjrIni = na.length ? Math.min(...na) : 0, sjrFim = na.length ? Math.max(...na) : 0;
+  $("#janela").innerHTML = `Janela de <b>${j.meses} meses</b> (${(j.meses/12).toFixed(1).replace(".", ",")} anos) contados da solicitação: artigos de <b>${j.anoIni}</b> a <b>${j.anoFim}</b>, pontuados pelo SJR de <b>${na.length ? anosTxt(na) : "nenhum ano"}</b>.`;
+
+  const linhas = all(SQL_RESULTADO, { ":ano_ini": j.anoIni, ":ano_fim": j.anoFim, ":sjr_ini": sjrIni, ":sjr_fim": sjrFim });
+  const N = Math.min(10, Math.max(1, parseInt($("#n-art").value) || 4));
+  let k = 0, soma = 0;
+  linhas.forEach(l => { l.elegivel = l.percentil != null && l.percentil >= 0.25; l.sel = l.elegivel && k < N; if (l.sel){ l.idx = ++k; soma += l.percentil; } });
+  ultimo = { linhas, soma, j, N };
+
+  /* Proposição 1 */
+  const nome = $("#nome").value.trim();
+  const quem = nome ? `<b>${esc(nome)}</b>` : "O docente";
+  const temDados = linhas.length > 0;
+  const atinge = soma >= 1.25 - 1e-9;
+  $("#res-box").className = "tbox" + (temDados ? (atinge ? " ok" : " no") : "");
+  $("#res-box .tbox-h small").textContent = temDados ? (atinge ? "Atinge o Art. X" : "Não atinge o Art. X") : "Art. X";
+  $("#prop").innerHTML = !temDados
+    ? `<i>Fica em aberto até haver artigos na janela de ${j.anoIni} a ${j.anoFim}.</i> Carregue o XML do Lattes em <a class="ref" href="#h1s">1.1</a> ou adicione artigos no <a class="ref" href="#ap-a">Apêndice A</a>.`
+    : `<i>${quem} <span class="${atinge ? "ok" : "no"}">${atinge ? "atinge" : "não atinge"}</span> o critério do Art. X na janela de ${j.anoIni} a ${j.anoFim}, com solicitação em ${j.dt.toLocaleDateString("pt-BR")}.</i>`;
+
+  /* Equação (1) */
+  $("#eq1").hidden = !temDados;
+  const sel = linhas.filter(l => l.sel);
+  if (temDados){
+    const termos = sel.map(l => P(l.idx)).join(`<span class="op">+</span>`);
+    const vals = sel.map(l => f3(l.percentil)).join(`<span class="op">+</span>`);
+    const rel = atinge ? "≥" : "<";
+    $("#eq1-body").innerHTML = `<span class="g"><var>S</var>` +
+      (sel.length ? `<span class="rel">=</span>${termos}</span> <span class="g"><span class="rel">=</span>${vals}</span> <span class="g"><span class="rel">=</span>` : "<span class=\"rel\">=</span>") +
+      `<span class="tot ${atinge ? "ok" : "no"}" id="eq-tot">${f3(soma)}</span><span class="rel">${rel}</span>1,250</span>`;
+    if (somaAnterior !== null && Math.abs(somaAnterior - soma) > 1e-9){
+      const t = $("#eq-tot"); t.classList.add("flash"); requestAnimationFrame(() => requestAnimationFrame(() => t.classList.remove("flash")));
+    }
+    somaAnterior = soma;
+  }
+
+  /* Figura 1 */
+  $("#fig1").hidden = !temDados;
+  if (temDados){
+    const escala = Math.max(N, 1.25);
+    $("#meter-track").innerHTML = sel.map(l => {
+      const w = l.percentil / escala * 100;
+      return `<div class="seg" tabindex="0" style="width:${w.toFixed(3)}%" title="${esc(l.titulo)}: p = ${f3(l.percentil)}">${w > 4 ? `<span>${P(l.idx)}</span>` : ""}</div>`;
+    }).join("");
+    $("#meter-track").setAttribute("aria-label", `Soma ${f3(soma)} na escala de 0 a ${N}. ` + sel.map(l => `p${l.idx} = ${f3(l.percentil)}`).join("; "));
+    $("#meter-thr").style.left = (1.25 / escala * 100) + "%";
+    const marcas = []; for (let v = 0; v <= escala; v++) marcas.push(v);
+    $("#meter-scale").innerHTML = marcas.map(v => `<span style="left:${(v / escala * 100).toFixed(3)}%">${v}</span>`).join("");
+    $("#fig1-cap").innerHTML = `<b>Figura 1.</b> Cada trecho é o ${P("i")} de um artigo que compõe <var>S</var>, do maior para o menor, na escala de 0 a ${N} (o máximo com ${N} artigos). A linha vertical marca o mínimo de 1,25. ${k} de ${N} artigos contam.`;
+  }
+
+  /* Tabela 1 */
+  $("#t1-cap").innerHTML = `<b>Tabela 1.</b> Artigos de ${j.anoIni} a ${j.anoFim}, ordenados por ${P("i")}. As linhas destacadas compõem <var>S</var> na equação <a class="ref" href="#eq1">(1)</a>; a <a class="ref" href="#fig1">Figura 1</a> mostra as mesmas parcelas.`;
+  $("#res-msg").innerHTML = (aviso_ ? `<p class="aviso" style="margin:8px 0 12px"><b>Atenção.</b> ${esc(aviso_)}</p>` : "")
+    + (!state.artigos.length ? `<p class="empty">Nenhum artigo carregado. Carregue o XML do Lattes em <a class="ref" href="#h1s">1.1</a> ou adicione artigos no <a class="ref" href="#ap-a">Apêndice A</a>.</p>`
+      : !linhas.length ? `<p class="empty">Nenhum dos ${state.artigos.length} artigos cai na janela de ${j.anoIni} a ${j.anoFim}. Revise a data da solicitação ou as exceções do Art. Y.</p>` : "");
+  $("#t-res").hidden = !linhas.length; $("#csv-out").disabled = !linhas.length; $("#demo-tg").disabled = !linhas.length;
+  const sit = l => l.sel ? `<span class="st in">Compõe ${P(l.idx)}</span>`
+    : l.percentil == null ? `<span class="st">Fora do SJR</span>`
+    : !l.elegivel ? `<span class="st bad"><var>p</var> &lt; 0,25</span>` : `<span class="st">Excede o limite de ${N}</span>`;
+  const prova = l => {
+    if (l.percentil == null) return `<i class="d">Demonstração.</i> O ISSN ${esc(fmtIssn(l.issn)) || "(vazio)"} não aparece na base SJR carregada para ${sjrIni === sjrFim ? sjrIni : sjrIni + "–" + sjrFim}, então o artigo não pontua.`;
+    const calc = `${P("i")} = 1 − (${l.posicao} − 1) / ${l.n} = ${f3(l.percentil)}`;
+    const fim = l.sel ? `Entra em <var>S</var> como ${P(l.idx)}.` : !l.elegivel ? `Como ${f3(l.percentil)} &lt; 0,25, não conta (Art. X).` : `É elegível, mas já há ${N} artigos melhores na soma.`;
+    return `<i class="d">Demonstração.</i> Maior percentil entre as categorias do periódico: em <i>${esc(l.categoria)}</i> (SJR ${l.ano_sjr}), posição ${l.posicao} entre ${l.n} periódicos, logo ${calc}. ${fim}<span class="qed">∎</span>`;
+  };
+  $("#t-res tbody").innerHTML = linhas.map((l, i) => `
+    <tr class="${l.sel ? "in" : "out"}"><td class="lbl-p">${l.sel ? P(l.idx) : `<span class="tnum">${i + 1}</span>`}</td>
+      <td><div class="t">${esc(l.titulo) || "<i>sem título</i>"}</div><div class="j">${esc(l.periodico)}</div></td>
+      <td class="n">${l.ano}</td><td><span class="mono">${esc(fmtIssn(l.issn))}</span></td>
+      <td class="n">${l.percentil == null ? "—" : f3(l.percentil)}${l.percentil == null ? "" : `<span class="pbar"><i style="width:${(l.percentil*100).toFixed(1)}%"></i></span>`}</td>
+      <td>${l.categoria ? esc(l.categoria) + ` <span class="muted tnum">(${l.ano_sjr})</span>` : "—"}</td><td>${sit(l)}</td></tr>
+    ${state.demo ? `<tr class="proof"><td colspan="7"><span class="pr">${prova(l)}</span></td></tr>` : ""}`).join("");
+
+  $("#sql-show-1").innerHTML = sqlHtml(SQL_PERCENTIL.trim() + "\n\n" + SQL_RESULTADO.trim());
+  return { nome, j };
+}
+
+/* =====================  §2 Revistas  ===================== */
+let ultimoRv = null;
+// A lista de categorias só muda quando um CSV é carregado: calcula uma vez e guarda.
+let catsCache = null, catsVersao = -1;
+function categorias(){
+  if (catsVersao !== state.arquivosSjr.length){
+    const pronta = all("SELECT 1 FROM sqlite_master WHERE name = 'categoria_resumo'").length;
+    catsCache = pronta ? all("SELECT categoria, n FROM categoria_resumo ORDER BY categoria")
+      : all("SELECT categoria, COUNT(DISTINCT sourceid) n FROM periodico_categoria GROUP BY categoria ORDER BY categoria");
+    catsVersao = state.arquivosSjr.length;
+    const sel = $("#rv-cat"), atual = sel.value;
+    sel.innerHTML = catsCache.map(c => `<option value="${esc(c.categoria)}">${esc(c.categoria)} (${c.n.toLocaleString("pt-BR")} revistas)</option>`).join("");
+    if (catsCache.some(c => c.categoria === atual)) sel.value = atual;
+    else if (catsCache.length){
+      const pref = catsCache.find(c => c.categoria === "Statistics and Probability") || catsCache.slice().sort((a,b) => b.n - a.n)[0];
+      sel.value = pref.categoria;
+    }
+  }
+  return catsCache;
+}
+function renderRevistas(){
+  const cats = categorias();
+  const cat = $("#rv-cat").value;
+  const ref = state.anosSjr.length ? Math.max(...state.anosSjr) : new Date().getFullYear();
+  const ini = ref - 3, fim = ref;
+  const anos = state.anosSjr.filter(y => y >= ini && y <= fim).sort();
+  const faltam = []; for (let y = ini; y <= fim; y++) if (!anos.includes(y)) faltam.push(y);
+
+  $("#rv-janela").innerHTML = `Intervalo dos últimos 4 anos SJR: <b>${ini}</b> a <b>${fim}</b> (o ano mais recente carregado). Anos com dados: <b>${anos.length ? anosTxt(anos) : "nenhum"}</b>.`;
+  $("#rv-aviso").innerHTML = faltam.length && anos.length
+    ? `<p class="aviso" style="margin-top:12px"><b>Atenção.</b> Faltam os CSVs de ${faltam.join(", ")}. A média usa só ${anos.length === 1 ? "o ano" : "os anos"} ${anosTxt(anos)}; adicione os demais anos para o ranking cobrir o período completo.</p>` : "";
+
+  const valida = cats.some(c => c.categoria === cat);
+  const lim = Math.min(500, Math.max(1, parseInt($("#rv-n").value) || 20));
+  const qRaw = $("#rv-q").value.trim();
+  const qi = /\d{4}/.test(qRaw) ? normIssn(qRaw) : "";
+  const linhas = valida && anos.length ? all(SQL_REVISTAS, { ":cat": cat, ":ini": ini, ":fim": fim, ":q": qRaw.toLowerCase(), ":qi": qi, ":lim": lim }) : [];
+  ultimoRv = { linhas, cat, anos, ini, fim };
+
+  const total = linhas[0]?.total ?? (valida ? all("SELECT COUNT(DISTINCT sourceid) c FROM percentil WHERE categoria = ? AND ano BETWEEN ? AND ?", [cat, ini, fim])[0].c : 0);
+  $("#t2-cap").innerHTML = valida
+    ? `<b>Tabela 2.</b> ${qRaw ? `Revistas de <i>${esc(cat)}</i> que correspondem a “${esc(qRaw)}”` : `As ${Math.min(lim, total)} revistas de maior percentil médio em <i>${esc(cat)}</i>`}, ${ini}–${fim}, de ${total} na categoria. Posição pelo <var>p̄</var> da <a class="ref" href="#def1">Definição 1</a>.`
+    : `<b>Tabela 2.</b> Escolha uma categoria do SJR.`;
+  $("#rv-msg").innerHTML = !cats.length ? `<p class="empty">Nenhuma categoria disponível. Adicione um CSV do Scimago.</p>`
+    : !valida ? `<p class="empty">“${esc(cat)}” não é uma categoria da base carregada. Comece a digitar e escolha uma das ${cats.length} categorias sugeridas.</p>`
+    : !linhas.length ? `<p class="empty">Nenhuma revista de <i>${esc(cat)}</i> corresponde a “${esc(qRaw)}”.</p>` : "";
+  $("#t-rv").hidden = !linhas.length; $("#rv-csv").disabled = !linhas.length;
+
+  $("#t-rv thead").innerHTML = `<tr><th class="n">Pos.</th><th>Revista</th><th>ISSN</th>${anos.map(y => `<th class="n">${P(`<span class="tnum">${y}</span>`)}</th>`).join("")}<th class="n">Anos</th><th class="n"><var>p̄</var></th></tr>`;
+  $("#t-rv tbody").innerHTML = linhas.map(l => {
+    const s = Object.fromEntries(String(l.serie || "").split(",").filter(Boolean).map(x => { const [a, p] = x.split(":"); return [a, parseFloat(p)]; }));
+    const issns = String(l.issns || "").split(",").filter(Boolean).map(fmtIssn);
+    return `<tr class="${l.media >= .25 ? "" : "out"}"><td class="n tnum">${l.posicao}</td>
+      <td><div class="t">${esc(l.titulo)}</div></td>
+      <td><span class="mono">${issns.map(esc).join("<br>")}</span></td>
+      ${anos.map(y => s[y] == null ? `<td class="n yr na">—</td>` : `<td class="n yr">${f3(s[y])}</td>`).join("")}
+      <td class="n">${l.anos}/${anos.length}</td>
+      <td class="n mean">${f3(l.media)}<span class="pbar"><i style="width:${(l.media*100).toFixed(1)}%"></i></span></td></tr>`;
+  }).join("");
+  $("#t2-note").innerHTML = linhas.length ? `Um traço indica que a revista não aparece na categoria naquele ano. Revistas com <var>p̄</var> &lt; 0,25 aparecem em cinza: não rendem pontos no Art. X.` : "";
+  $("#sql-show-2").innerHTML = sqlHtml(SQL_REVISTAS.trim());
+}
+
+function sqlHtml(s){ return esc(s).replace(/^(--.*)$/gm, '<span class="cm">$1</span>'); }
+
+// Só a aba visível é recalculada; a outra é desenhada quando for aberta (abrirAba chama render).
+function render(){
+  renderBase();
+  if (state.aba === "apuracao"){
+    const { nome, j } = renderApuracao();
+    $("#print-head").textContent = `${nome || "docente"} · janela ${j.anoIni}–${j.anoFim} · SJR ${anosTxt(state.anosSjr)}`;
+  } else {
+    renderRevistas();
+    $("#print-head").textContent = `${ultimoRv?.cat || ""} · SJR ${ultimoRv ? ultimoRv.ini + "–" + ultimoRv.fim : ""}`;
+  }
+}
+
+/* abas */
+function abrirAba(id, foco){
+  state.aba = id === "revistas" ? "revistas" : "apuracao";
+  const ap = state.aba === "apuracao";
+  $("#tab-ap").setAttribute("aria-selected", ap); $("#tab-rv").setAttribute("aria-selected", !ap);
+  $("#tab-ap").tabIndex = ap ? 0 : -1; $("#tab-rv").tabIndex = ap ? -1 : 0;
+  $("#pn-ap").hidden = !ap; $("#pn-rv").hidden = ap;
+  if (foco) (ap ? $("#tab-ap") : $("#tab-rv")).focus();
+  history.replaceState(null, "", "#" + state.aba);
+  if (db) render();
+}
+
+function addArt(a){ state.artigos.push({ id: state.seq++, ...a }); }
+
+function perguntarAno(nome){
+  return new Promise(res => {
+    const d = $("#dlg-ano"); $("#dlg-nome").textContent = `O nome de “${nome}” não traz o ano. Informe a qual ano do SJR ele se refere.`; $("#dlg-ano-in").value = "";
+    d.addEventListener("close", () => res(d.returnValue === "ok" ? parseInt($("#dlg-ano-in").value) || 0 : 0), { once:true });
+    d.returnValue = ""; d.showModal(); $("#dlg-ano-in").focus();
+  });
+}
+
+function baixarCsv(nome, linhas){
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob(["﻿" + linhas.join("\n")], { type:"text/csv" }));
+  a.download = nome; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+const q = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
+
+function ligarEventos(){
+  $("#xml-in").addEventListener("change", async e => {
+    const f = e.target.files[0]; if (!f) return;
+    try{
+      const { nome, arts } = await lerLattes(f);
+      if (nome) $("#nome").value = nome;
+      state.artigos = []; arts.forEach(addArt); render();
+      aviso(`${arts.length} artigos lidos do Lattes.`);
+    }catch(err){ aviso(err.message); }
+    e.target.value = "";
+  });
+  $("#csv-in").addEventListener("change", async e => {
+    const files = [...e.target.files]; e.target.value = "";
+    for (const f of files){
+      let ano = parseInt((f.name.match(/(20\d\d)/) || [])[1]) || await perguntarAno(f.name);
+      if (!ano) continue;
+      try{ carregarCsv(await f.text(), ano, f.name); aviso(`${f.name}: carregado como SJR ${ano}.`); }catch(err){ aviso(f.name + ": " + err.message); }
+    }
+    render();
+  });
+  $("#a-add").addEventListener("click", () => {
+    const ano = parseInt($("#a-ano").value), issn = normIssn($("#a-issn").value);
+    if (!ano || !issn){ aviso("Informe ao menos o ano e o ISSN do artigo."); return; }
+    addArt({ ano, titulo: $("#a-tit").value, periodico: $("#a-per").value, issn });
+    ["#a-ano","#a-tit","#a-per","#a-issn"].forEach(s => $(s).value = ""); render();
+    $("#a-ano").focus();
+  });
+  $("#t-art").addEventListener("click", e => { const id = e.target.dataset?.del; if (!id) return; state.artigos = state.artigos.filter(a => a.id != id); render(); });
+  ["#dt-sol","#n-art","#e-par","#e-pcd","#e-med","#e-med-m","#nome","#rv-cat","#rv-n","#rv-q"].forEach(s => $(s).addEventListener("input", render));
+  $("#demo-tg").addEventListener("click", e => { state.demo = !state.demo; e.currentTarget.setAttribute("aria-pressed", state.demo); e.currentTarget.textContent = state.demo ? "Ocultar demonstração" : "Mostrar demonstração"; render(); });
+  $("#print").addEventListener("click", () => window.print());
+  /* referências cruzadas: rolam sem trocar a aba no hash e abrem apêndices */
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a.ref"); if (!a) return;
+    const alvo = document.querySelector(a.getAttribute("href")); if (!alvo) return;
+    e.preventDefault();
+    if (alvo.tagName === "DETAILS") alvo.open = true;
+    alvo.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+  });
+  document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => abrirAba(t.dataset.tab)));
+  $(".tabs").addEventListener("keydown", e => {
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft"){ e.preventDefault(); abrirAba(state.aba === "apuracao" ? "revistas" : "apuracao", true); }
+  });
+  $("#csv-out").addEventListener("click", () => {
+    if (!ultimo) return;
+    const lin = [["ano","titulo","periodico","issn","percentil","categoria","ano_sjr","posicao","n","conta_na_soma"].join(";")]
+      .concat(ultimo.linhas.map(l => [l.ano, q(l.titulo), q(l.periodico), l.issn, l.percentil ?? "", q(l.categoria), l.ano_sjr ?? "", l.posicao ?? "", l.n ?? "", l.sel ? "sim" : "nao"].join(";")));
+    lin.push(["","","","","soma", ultimo.soma.toFixed(3), "", "", "", ""].join(";"));
+    baixarCsv("resultado-" + ($("#nome").value || "docente").trim().replace(/\s+/g, "_") + ".csv", lin);
+  });
+  $("#rv-csv").addEventListener("click", () => {
+    if (!ultimoRv) return;
+    const { linhas, anos, cat } = ultimoRv;
+    const lin = [["posicao","revista","issn",...anos.map(y => "p_" + y),"anos","percentil_medio"].join(";")]
+      .concat(linhas.map(l => {
+        const s = Object.fromEntries(String(l.serie || "").split(",").filter(Boolean).map(x => x.split(":")));
+        return [l.posicao, q(l.titulo), q(String(l.issns || "").split(",").map(fmtIssn).join(" ")), ...anos.map(y => s[y] ?? ""), l.anos, l.media.toFixed(3)].join(";");
+      }));
+    baixarCsv("revistas-" + cat.replace(/\s+/g, "_") + ".csv", lin);
+  });
+}
+
+let iniciado = false;
+async function entrar(){
+  $("#login").hidden = true; $("#app").hidden = false;
+  if (iniciado) return; iniciado = true;
+  $("#dt-sol").value = new Date().toISOString().slice(0, 10);
+  SQL = await initSqlJs({ locateFile: f => "vendor/" + f });
+  novoBanco(); if (!(await carregarBase())) await carregarManifest(); categorias(); ligarEventos();
+  abrirAba(location.hash === "#revistas" ? "revistas" : "apuracao");
+  window.__pronto = true;
+}
+
+/* sessão ativa nesta aba? */
+(async () => { const s = sess.get(); if (s && AUTH.hashes.includes(s)) await entrar(); else $("#lg-user").focus(); })();
+</script>
+</body>
+</html>
